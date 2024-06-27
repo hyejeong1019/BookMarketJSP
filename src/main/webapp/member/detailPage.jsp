@@ -6,7 +6,7 @@
 	if (noStr == null) {
 		response.sendRedirect("main.jsp");
 	} else {
-		MemberService service = new MemberService(new MemberDAO());
+		MemberService service = new HJMemberService(new OracleMemberDAO());
 		Member member = service.read(Integer.parseInt(noStr));
 %>
 <!DOCTYPE html>
