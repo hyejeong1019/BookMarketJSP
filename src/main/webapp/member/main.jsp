@@ -2,6 +2,7 @@
 	import="member.*"
 	import="java.util.List"
     pageEncoding="UTF-8"%>
+<%@ include file = "/common/isAdminLogged.jsp" %>
 <%
 	MemberService service = new HJMemberService(new OracleMemberDAO());
 	List<Member> memberList = service.listAll();
@@ -14,9 +15,8 @@
 <title>회원 관리</title>
 </head>
 <body>
-	<h1>회원 관리 메인 페이지</h1>
-	<a href="registPage.jsp"><button>회원등록</button></a>
-	<br>
+<%@ include file = "/common/header.jsp" %>
+	<h3>회원 관리 메인 페이지</h3>
 	<h3>회원 목록</h3>
 	<%	if (memberList.size() == 0) { %>
 	<p>등록되어 있는 회원이 없습니다.</p>
@@ -33,5 +33,6 @@
 		<% } %>
 	</table>
 	<% } %>
+<%@ include file = "/common/footer.jsp" %>
 </body>
 </html>

@@ -18,46 +18,45 @@ public class HJCartService implements CartService {
 		int result = 0;
 		
 		// 장바구니에 같은 책이 있는지 확인한다. --> bookId로 확인
-		CartItem inItem = cartDao.selectByBookId(item.getBookId());
+		CartItem inItem = cartDao.selectByBookId(item.getMemberNo(), item.getBookId());
 		if (inItem == null) {
 			System.out.println("책 추가");
 			result = cartDao.insert(item);
 		} else {
 			int quantity = item.getQuantity() + inItem.getQuantity();
 			System.out.println("수량 변경 :" + quantity);
-			result = cartDao.update(inItem.getId(), inItem.getQuantity() + item.getQuantity());
+			result = cartDao.update(inItem.getId(), item.getMemberNo(), item.getQuantity() + item.getQuantity());
 		}
 		
 		return result == 1 ? true : false;
 	}
 
 	@Override
-	public List<CartItem> listAll() {
+	public List<CartItem> listAll(int loggedMemberNo) {
 		
-		return cartDao.selectAll();
+		return cartDao.selectAll(loggedMemberNo);
 	}
 
 	@Override
-	public boolean update(int id, int quantity) {
+	public boolean update(int cartId, int loggedMemberNo, int quantity) {
 		
-		int result = cartDao.update(id, quantity);
+		int result = cartDao.update(cartId, loggedMemberNo, quantity);
 		return result == 1 ? true : false;
 		
 	}
 
 	@Override
-	public boolean remove(int id) {
+	public boolean remove(int cartId, int loggedMemberNo) {
 		
-		int result = cartDao.delete(id);
+		int result = cartDao.delete(cartId, loggedMemberNo);
 		return result == 1 ? true : false;
 	}
 
 	@Override
-	public boolean clear() {
+	public boolean clear(int loggedMemberNo) {
 		
-		cartDao.deleteAll();
-		
-		return cartDao.selectAll().size() == 0 ? true : false;
+		int result = cartDao.deleteAll(loggedMemberNo);
+		return result > 0 ? true : false;
 	}
 
 }

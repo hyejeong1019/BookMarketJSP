@@ -33,15 +33,14 @@
 		</ul>
 		<br>
 		
-	   <% char memberType = 'M';
-		if (memberType == 'A') { %>
+	   <%
+		if (session.getAttribute("AdminId") != null) { %>
 			<a href="modifyPage.jsp?id=<%= book.getId() %>"><button>수정</button></a>
 			<a href="removePage.jsp?id=<%= book.getId() %>"><button>삭제</button></a>
-		<% } else if (memberType == 'M'){ %>
+		<% } else if (session.getAttribute("MemberId") != null){ %>
 			<a href="<%= request.getContextPath() %>/cart/add.jsp?bookId=<%= book.getId() %>"><button>장바구니 담기</button></a>
-			<a href="<%= request.getContextPath() %>/index.jsp"><button>도서 목록</button></a>
 		<% } %>
-		
+		<a href="<%= request.getContextPath() %>/index.jsp"><button>도서 목록</button></a>
 	<% } %>
 	<%@ include file = "/common/footer.jsp" %>
 </body>

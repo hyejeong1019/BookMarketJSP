@@ -8,11 +8,10 @@ import common.JDBConnection;
 import common.OracleJDBConnection;
 
 public interface MemberDAO {
-	
-	public int deleteMember(int no);
-	public int updateMember(Member member);	
-	public int insertMember(Member member);
-	public List<Member> selectMemberAll();
-	public Member selectMember(int no);
-	
+	public int insert(Member member);
+	public Member select(int no);
+	public Member select(String id, String password);
+	public List<Member> selectAll();
+	public int delete(int no);
+	public int update(Member member);	
 }

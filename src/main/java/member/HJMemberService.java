@@ -12,21 +12,26 @@ public class HJMemberService implements MemberService {
 	
 	@Override
 	public boolean regist(Member member) {
-		int result = memberDao.insertMember(member);
+		int result = memberDao.insert(member);
 		
 		return (result == 1) ? true : false;
 	}
 	
 	@Override
+	public Member login(String id, String password) {
+		return memberDao.select(id, password);
+	}
+	
+	@Override
 	public Member read(int no) {
-		Member member = memberDao.selectMember(no);
+		Member member = memberDao.select(no);
 		return member;
 	}
 	
 	@Override
 	public List<Member> listAll() {
 		
-		List<Member> memberList = memberDao.selectMemberAll();
+		List<Member> memberList = memberDao.selectAll();
 		return memberList;
 	}
 	
@@ -38,9 +43,9 @@ public class HJMemberService implements MemberService {
 		
 		int result = 0;
 		
-		Member memInfo = memberDao.selectMember(member.getNo());
+		Member memInfo = memberDao.select(member.getNo());
 		if (oldPassword.equals(memInfo.getPassword())) {
-				result = memberDao.updateMember(member);
+				result = memberDao.update(member);
 		}
 		
 		return (result == 1) ? true : false;
@@ -48,11 +53,11 @@ public class HJMemberService implements MemberService {
 	
 	@Override
 	public boolean remove(int no) {
-		if (memberDao.selectMember(no) == null) {
+		if (memberDao.select(no) == null) {
 			return false;
 		}
 		
-		int result = memberDao.deleteMember(no);
+		int result = memberDao.delete(no);
 		
 		return (result == 1) ? true : false;
 	}

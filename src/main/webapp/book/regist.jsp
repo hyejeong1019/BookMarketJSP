@@ -3,6 +3,7 @@
 	import="book.hyejeong.*"
 	import="book.oracle.*"
     pageEncoding="UTF-8"%>
+<%@ include file = "/common/isAdminLogged.jsp" %>
 <%
 	String title = request.getParameter("title");
 	String author = request.getParameter("author");

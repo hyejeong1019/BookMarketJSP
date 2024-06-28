@@ -9,8 +9,83 @@ import common.OracleJDBConnection;
 
 public class OracleMemberDAO implements MemberDAO {
 	
+	
 	@Override
-	public int deleteMember(int no) {
+	public Member select(int no) {
+
+		Member member = null;
+
+		// DB 연결
+		JDBConnection jdbc = new OracleJDBConnection();
+
+		// sql문 만들기
+		String sql = "select * from member where no=?";
+
+		try {
+			// PreparedStatement 객체 생성
+			jdbc.pstmt = jdbc.conn.prepareStatement(sql);
+			jdbc.pstmt.setInt(1, no);
+
+			// SQL문 실행
+			jdbc.rs = jdbc.pstmt.executeQuery();
+
+			// ResultSet 객체에서 결과값 가져와서 출력하기
+			if (jdbc.rs.next()) {
+				member = new Member(jdbc.rs.getInt("no"), jdbc.rs.getString("id"), jdbc.rs.getString("password"),
+						jdbc.rs.getString("nickname"), jdbc.rs.getDate("regdate"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		// 자원 객체 닫기
+		jdbc.close();
+
+		return member;
+	}
+	
+	
+	@Override
+	public Member select(String id, String password) {
+		
+		Member member = null;
+
+		JDBConnection jdbc = new OracleJDBConnection();
+
+		String sql = "select * from member where id=? and password=?";
+
+		try {
+			// PreparedStatement 객체 생성
+			jdbc.pstmt = jdbc.conn.prepareStatement(sql);
+			jdbc.pstmt.setString(1, id);
+			jdbc.pstmt.setString(2, password);
+			
+			// SQL문 실행
+			jdbc.rs = jdbc.pstmt.executeQuery();
+
+			// ResultSet 객체에서 결과값 가져와서 출력하기
+			if (jdbc.rs.next()) {
+				member = new Member(
+					jdbc.rs.getInt("no"),
+					jdbc.rs.getString("id"),
+					jdbc.rs.getString("password"),
+					jdbc.rs.getString("nickname"),
+					jdbc.rs.getDate("regdate"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		// 자원 객체 닫기
+		jdbc.close();
+
+		return member;
+		
+	}
+	
+	@Override
+	public int delete(int no) {
 		int result = 0;
 		
 		// DB 연결
@@ -41,7 +116,7 @@ public class OracleMemberDAO implements MemberDAO {
 	}
 	
 	@Override
-	public int updateMember(Member member) {
+	public int update(Member member) {
 		
 		JDBConnection jdbc = new OracleJDBConnection();
 
@@ -75,7 +150,7 @@ public class OracleMemberDAO implements MemberDAO {
 	}
 	
 	@Override
-	public int insertMember(Member member) {
+	public int insert(Member member) {
 		// DB 연결
 		JDBConnection jdbc = new OracleJDBConnection();
 		
@@ -111,7 +186,7 @@ public class OracleMemberDAO implements MemberDAO {
 	}
 
 	@Override
-	public List<Member> selectMemberAll() {
+	public List<Member> selectAll() {
 		// DB 연결
 		JDBConnection jdbc = new OracleJDBConnection();
 
@@ -147,39 +222,6 @@ public class OracleMemberDAO implements MemberDAO {
 		return memberList;
 	}
 
-	@Override
-	public Member selectMember(int no) {
 
-		Member member = null;
-
-		// DB 연결
-		JDBConnection jdbc = new OracleJDBConnection();
-
-		// sql문 만들기
-		String sql = "select * from member where no=?";
-
-		try {
-			// PreparedStatement 객체 생성
-			jdbc.pstmt = jdbc.conn.prepareStatement(sql);
-			jdbc.pstmt.setInt(1, no);
-
-			// SQL문 실행
-			jdbc.rs = jdbc.pstmt.executeQuery();
-
-			// ResultSet 객체에서 결과값 가져와서 출력하기
-			if (jdbc.rs.next()) {
-				member = new Member(jdbc.rs.getInt("no"), jdbc.rs.getString("id"), jdbc.rs.getString("password"),
-						jdbc.rs.getString("nickname"), jdbc.rs.getDate("regdate"));
-
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		// 자원 객체 닫기
-		jdbc.close();
-
-		return member;
-	}
 
 }

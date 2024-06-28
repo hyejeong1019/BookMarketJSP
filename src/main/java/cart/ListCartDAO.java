@@ -1,11 +1,12 @@
 package cart;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ListCartDAO implements CartDAO {
 	
-	static private List<CartItem> itemList = new ArrayList<>();
+	static private List<CartItem> itemList = new LinkedList<>();
 	static private int cart_seq = 0;
 	
 	@Override
@@ -19,38 +20,46 @@ public class ListCartDAO implements CartDAO {
 	}
 
 	@Override
-	public CartItem select(int id) {
+	public CartItem select(int cartId, int loggedMemberNo) {
 		for (CartItem item : itemList) {
-			if (item.getId() == id)
+			if (item.getId() == cartId && item.getMemberNo() == loggedMemberNo)
 				return item;
 		}
 		return null;
 	}
 
 	@Override
-	public CartItem selectByBookId(int bookId) {
+	public CartItem selectByBookId(int loggedMemberNo, int bookId) {
 
 		for (CartItem item : itemList) {
-			if (item.getBookId() == bookId)
+			if (item.getBookId() == bookId && item.getMemberNo() == loggedMemberNo)
 				return item;
 		}
 		return null;
 	}
 
 	@Override
-	public List<CartItem> selectAll() {
-	
-		return itemList;
+	public List<CartItem> selectAll(int loggedMemberNo) {
+		
+		List<CartItem> resultList = new LinkedList<>();
+		
+		for (CartItem item : itemList) {
+			if (item.getMemberNo() == loggedMemberNo) {
+				resultList.add(item);
+			}
+		}
+		
+		return resultList;
 	}
 
 	@Override
-	public int update(int id, int quantity) {
+	public int update(int cartId, int loggedMemberNo, int quantity) {
 		
 		int result = 0;
 		
-		CartItem item = select(id);
+		CartItem item = select(cartId, loggedMemberNo);
 		if(item != null) {
-			System.out.println("update (" + id + ")" + quantity);
+			System.out.println("update (" + cartId + ")" + quantity);
 			item.setQuantity(quantity);
 			result = 1;
 		}
@@ -59,11 +68,11 @@ public class ListCartDAO implements CartDAO {
 	}
 
 	@Override
-	public int delete(int id) {
+	public int delete(int cartId, int loggedMemberNo) {
 		
 		int result = 0;
 		
-		CartItem item = select(id);
+		CartItem item = select(cartId, loggedMemberNo);
 		if (item != null && itemList.remove(item)) {
 			result = 1;
 		}
@@ -71,11 +80,16 @@ public class ListCartDAO implements CartDAO {
 	}
 
 	@Override
-	public int deleteAll() {
+	public int deleteAll(int loggedMemberNo) {
 	
-		int result = itemList.size();
+		int result = 0;
 		
-		itemList.clear();
+		for (CartItem item : itemList) {
+			if (item.getMemberNo() == loggedMemberNo) {
+				itemList.remove(item);
+				result++;
+			}
+		}
 		
 		return result;
 	}

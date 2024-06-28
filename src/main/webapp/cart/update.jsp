@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	import="cart.*"
     pageEncoding="UTF-8"%>
+<%@ include file = "/common/isLoggedIn.jsp" %>
 <%
 	String idStr = request.getParameter("id");
 	String quanStr = request.getParameter("quantity");
@@ -11,7 +12,7 @@
 	}
 	
 	CartService service = new HJCartService(new ListCartDAO());
-	if (service.update(Integer.parseInt(idStr), Integer.parseInt(quanStr))) {
+	if (service.update(Integer.parseInt(idStr), memberNo, Integer.parseInt(quanStr))) {
 		response.sendRedirect(request.getContextPath() + "/cart/main.jsp");
 	} else {
 		response.sendRedirect(request.getContextPath() + "/common/errorPage.jsp?cartUpdateErr=2");

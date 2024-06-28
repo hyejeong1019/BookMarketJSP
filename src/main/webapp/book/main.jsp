@@ -4,6 +4,9 @@
 	import="book.oracle.*"
 	import="java.util.List"
     pageEncoding="UTF-8"%>
+    
+<%@ include file = "/common/isAdminLogged.jsp" %>
+
 <%
 	BookService service = new HJBookService(new OracleBookDAO());
 	List<Book> bookList = service.listAll();

@@ -6,12 +6,12 @@ public interface CartDAO {
 	//C
 	int insert(CartItem item);
 	//R
-	CartItem select(int id);
-	CartItem selectByBookId(int bookId);
-	List<CartItem> selectAll();
+	CartItem select(int cartId, int loggedMemberNo);
+	CartItem selectByBookId(int loggedMemberNo, int bookId);
+	List<CartItem> selectAll(int loggedMemberNo);
 	//U
-	int update(int id, int quantity);
+	int update(int cartId, int loggedMemberNo, int quantity);
 	//D
-	int delete(int id);
-	int deleteAll();
+	int delete(int cartId, int loggedMemberNo);
+	int deleteAll(int loggedMemberNo);
 }

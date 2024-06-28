@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	import="member.*"
     pageEncoding="UTF-8"%>
+<%@ include file = "/common/isLoggedIn.jsp" %>
 <%
 	String noStr = request.getParameter("no");
 	if (noStr == null) {
@@ -19,6 +20,7 @@
 <title>회원 삭제 페이지</title>
 </head>
 <body>
+<%@ include file = "/common/header.jsp" %>
 	<h3>회원 삭제</h3>
 	<ul>
 		<li>회원번호 : <%= member.getNo() %></li>
@@ -29,6 +31,7 @@
 	<br>
 	<a href="remove.jsp?no=<%= member.getNo() %>"><button>삭제</button></a>
 	<a href="detailPage.jsp?no=<%= member.getNo() %>"><button>취소</button></a>
+<%@ include file = "/common/footer.jsp" %>
 </body>
 </html>
 	<% }

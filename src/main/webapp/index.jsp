@@ -25,7 +25,7 @@
 </head>
 <body>
 	
-	<%@ include file = "/common/header.jsp" %>
+<%@ include file = "/common/header.jsp" %>
 	
 	<h3>도서목록</h3>
 	<% if (bookList.size() == 0) {%>

@@ -1,17 +1,23 @@
 package cart;
 
+import java.sql.Date;
+
 public class CartItem {
 	private int id;
+	private int memberNo;
 	private int bookId;
 	private int quantity;
+	private Date addDate;
 	
-	public CartItem (int bookId, int quantity) {
+	public CartItem (int memberNo, int bookId, int quantity) {
+		this.memberNo = memberNo;
 		this.bookId = bookId;
 		this.quantity = quantity;
 	}
 	
-	public CartItem (int id, int bookId, int quantity) {
-		this.id = id;
+	public CartItem (int cartId, int memberNo, int bookId, int quantity) {
+		this.id = cartId;
+		this.memberNo = memberNo;
 		this.bookId = bookId;
 		this.quantity = quantity;
 	}
@@ -22,6 +28,14 @@ public class CartItem {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public int getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
 	}
 
 	public int getBookId() {
@@ -42,7 +56,7 @@ public class CartItem {
 
 	@Override
 	public String toString() {
-		return "CartItem [id=" + id + ", bookId=" + bookId + ", quantity=" + quantity + "]";
-	}
-	
+		return "CartItem [id=" + id + ", memberNo=" + memberNo + ", bookId=" + bookId + ", quantity=" + quantity
+				+ ", addDate=" + addDate + "]";
+	}	
 }

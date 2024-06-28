@@ -3,9 +3,10 @@
 	import="book.*"
 	import="java.util.List"
     pageEncoding="UTF-8"%>
+<%@ include file = "/common/isLoggedIn.jsp" %>
 <%
 	CartService cartService = new HJCartService(new ListCartDAO());
-	List<CartItem> itemList = cartService.listAll();
+	List<CartItem> itemList = cartService.listAll(memberNo);
 %>
 <!DOCTYPE html>
 <html>

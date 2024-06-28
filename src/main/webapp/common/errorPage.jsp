@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	[<%= request.getParameter("id") %>]오류가 발생했습니다. <a href="<%= request.getContextPath() %>/index.jsp"><button>홈으로 가기</button></a>
+	오류가 발생했습니다. <a href="<%= request.getContextPath() %>/index.jsp"><button>홈으로 가기</button></a>
 </body>
 </html>
