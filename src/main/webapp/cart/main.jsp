@@ -47,14 +47,14 @@
 				numItems += item.getQuantity();
 				totalPrice += book.getPrice() * item.getQuantity();
 		%>
-		<tr><td><%= item.getId() %></td><td><%= item.getBookId() %></td>
+		<tr><td><%= item.getCartId() %></td><td><%= item.getBookId() %></td>
 			<td><%= book.getTitle() %></td><td><%= String.format("%,d", book.getPrice()) %></td>
 			<td><form action="update.jsp" method="post" onsumbmit="return isValidForm()">
-					<input type="hidden" name="id" value="<%= item.getId() %>">
+					<input type="hidden" name="id" value="<%= item.getCartId() %>">
 					<input type="number" name="quantity" value="<%= item.getQuantity() %>">
 					<input type="submit" value="수정">
 			</form>
-				<button onclick="askConfirmRemove(<%= item.getId() %>)">삭제</button>
+				<button onclick="askConfirmRemove(<%= item.getCartId() %>)">삭제</button>
 			</td>
 		</tr>
 		
