@@ -3,7 +3,7 @@
 	import="book.hyejeong.*"
 	import="book.oracle.*"
     pageEncoding="UTF-8"%>
-<%@ include file = "/common/isAdminLogged.jsp" %>    
+<%@ include file = "/common/isAdminLogged.jsp" %>
 <%
 	String idStr = request.getParameter("id");
 	if (idStr == null) {
@@ -19,6 +19,7 @@
 <title>도서 삭제</title>
 </head>
 <body>
+<%@ include file = "/common/header.jsp" %>
 	<h3>도서 삭제</h3>
 	<% if (book == null) { %>
 		<p>도서 정보가 없습니다.</p>
@@ -37,6 +38,7 @@
 		<a href="detailPage.jsp?id=<%= book.getId() %>"><button>취소</button></a>
 		
 	<% } %>
+<%@ include file = "/common/footer.jsp" %>
 </body>
 </html>
 <% } %>

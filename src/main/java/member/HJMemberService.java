@@ -12,6 +12,9 @@ public class HJMemberService implements MemberService {
 	
 	@Override
 	public boolean regist(Member member) {
+
+		if (member == null) return false;
+		
 		int result = memberDao.insert(member);
 		
 		return (result == 1) ? true : false;
@@ -19,6 +22,7 @@ public class HJMemberService implements MemberService {
 	
 	@Override
 	public Member login(String id, String password) {
+	
 		return memberDao.select(id, password);
 	}
 	

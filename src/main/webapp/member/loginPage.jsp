@@ -11,10 +11,10 @@
 	<h2>로그인</h2>
 	<%
 		if (request.getParameter("loginError") != null) {
-			out.print("로그인을 다시 하세요.");
+			out.println("로그인을 다시 하세요.");
 		}
 	%>
-				
+
 	<form action="login.jsp" method="post">
 		<input type="text" name="id" placeholder="아이디 입력"><br>
 		<input type="password" name="password" placeholder="비밀번호 입력"><br>

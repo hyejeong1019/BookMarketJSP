@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	import="book.*"
-	import="book.hyejeong.*"
-	import="book.oracle.*"
     pageEncoding="UTF-8"%>
- <%@ include file = "/common/isAdminLogged.jsp" %>   
+<%@ include file = "/common/isAdminLogged.jsp" %>
  <%
  	String idStr = request.getParameter("id");
 	String title = request.getParameter("title");
@@ -11,7 +9,7 @@
 	String publisher = request.getParameter("publisher");
 	String priceStr = request.getParameter("price");
 	String instockStr = request.getParameter("instock");
-		
+	
 	//****** 이상함 priceStr과 instockStr을 null로 확인 문제가 생김
 	if (idStr == null) {
 		response.sendRedirect("main.jsp");

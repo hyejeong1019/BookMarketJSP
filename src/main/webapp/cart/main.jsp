@@ -47,8 +47,10 @@
 				numItems += item.getQuantity();
 				totalPrice += book.getPrice() * item.getQuantity();
 		%>
-		<tr><td><%= item.getCartId() %></td><td><%= item.getBookId() %></td>
-			<td><%= book.getTitle() %></td><td><%= String.format("%,d", book.getPrice()) %></td>
+		<tr><td><%= item.getCartId() %></td>
+			<td><%= item.getBookId() %></td>
+			<td><%= book.getTitle() %></td>
+			<td><%= String.format("%,d", book.getPrice()) %></td>
 			<td><form action="update.jsp" method="post" onsumbmit="return isValidForm()">
 					<input type="hidden" name="id" value="<%= item.getCartId() %>">
 					<input type="number" name="quantity" value="<%= item.getQuantity() %>">
@@ -61,6 +63,7 @@
 		<%} %>
 	</table>
 	<br>
+	<a href="<%= request.getContextPath() %>/index.jsp"><button>도서목록</button></a>	
 	<p>총 상품가격 : <%= String.format("%,d", totalPrice) %>원 (총 <%= numItems %>권)</p>
 	<button onclick="askConfirmOrder()">주문하기</button>
 	<button onclick="askConfirmClear()">장바구니 비우기</button>	
@@ -81,8 +84,7 @@
 	function askConfirmRemove(cartId) {
 		if (confirm("도서를 장바구니에서 삭제합니다."))
 			location = "<%= request.getContextPath() %>/cart/remove.jsp?id=" + cartId;
-	}
-	
+	}	
 </script>
 </body>
 </html>

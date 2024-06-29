@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	import="book.*"
-	import="book.hyejeong.*"
-	import="book.oracle.*"
 	import="java.util.List"
     pageEncoding="UTF-8"%>
-    
 <%@ include file = "/common/isAdminLogged.jsp" %>
-
 <%
 	BookService service = new HJBookService(new OracleBookDAO());
 	List<Book> bookList = service.listAll();
@@ -27,6 +23,7 @@
 </style>
 </head>
 <body>
+<%@ include file = "/common/header.jsp" %>
 	<h1>도서 관리</h1>
 	<a href="registPage.jsp"><button>도서 등록</button></a>
 	<h3>도서 목록</h3>
@@ -47,5 +44,6 @@
 		<% } %>
 	</table>
 <% } %>
+<%@ include file = "/common/footer.jsp" %>
 </body>
 </html>

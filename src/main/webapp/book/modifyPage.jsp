@@ -3,9 +3,7 @@
 	import="book.hyejeong.*"
 	import="book.oracle.*"
     pageEncoding="UTF-8"%>
-
 <%@ include file = "/common/isAdminLogged.jsp" %>
-
 <%
 	String idStr = request.getParameter("id");
 	if (idStr == null) {
@@ -26,6 +24,7 @@
 <title>도서 정보 수정</title>
 </head>
 <body>
+<%@ include file = "/common/header.jsp" %>
 	<h3>도서 정보 수정</h3>
 	<form action="modify.jsp" method="post">
 		<input type="hidden" name="id" value="<%= book.getId() %>">
@@ -38,6 +37,7 @@
 		<input type="submit" value="수정">
 		<a href="detailPage.jsp?id=<%= book.getId() %>"><input type="button" value="취소"></a>
 	</form>
+<%@ include file = "/common/footer.jsp" %>	
 </body>
 </html>
 <%	

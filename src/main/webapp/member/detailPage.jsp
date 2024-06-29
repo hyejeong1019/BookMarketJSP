@@ -1,14 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	import="member.*"
     pageEncoding="UTF-8"%>
-<%@ include file = "/common/isLoggedIn.jsp" %>
+<%
+	if (session.getAttribute("MemberId") == null
+		&& session.getAttribute("AdminId") == null) {
+			response.sendRedirect(request.getContextPath() + "/index.jsp");
+			return;
+	}
+%>
 <%
 	String noStr = request.getParameter("no");
 	if (noStr == null) {
 		response.sendRedirect(request.getContextPath() + "/common/errorPage.jsp?detailError=1");
-	} else {
-		MemberService service = new HJMemberService(new OracleMemberDAO());
-		Member member = service.read(Integer.parseInt(noStr));
+		return;
+	}
+	MemberService service = new HJMemberService(new OracleMemberDAO());
+	Member member = service.read(Integer.parseInt(noStr));
 %>
 <!DOCTYPE html>
 <html>
@@ -39,4 +46,3 @@
 <%@ include file = "/common/footer.jsp" %>
 </body>
 </html>
-<% } %>

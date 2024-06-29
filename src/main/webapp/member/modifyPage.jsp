@@ -4,14 +4,16 @@
 <%@ include file = "/common/isLoggedIn.jsp" %>
 <%
 	String noStr = request.getParameter("no");
-	if (noStr == null) {
-		response.sendRedirect("main.jsp");
-	} else {
-		MemberService service = new HJMemberService(new OracleMemberDAO());
-		Member member = service.read(Integer.parseInt(noStr));
-		if (member == null) {
-			response.sendRedirect("main.jsp");
-		} else {
+	if (noStr == null || noStr.isEmpty()) {
+		response.sendRedirect(request.getContextPath() + "/common/errorPage.jsp?modifyError=1");
+		return;
+	}
+	MemberService service = new HJMemberService(new OracleMemberDAO());
+	Member member = service.read(Integer.parseInt(noStr));
+	if (member == null) {
+		response.sendRedirect(request.getContextPath() + "/common/errorPage.jsp?modifyError=2");
+		return;
+	}
 %>  
 <!DOCTYPE html>
 <html>
@@ -35,5 +37,3 @@
 <%@ include file = "/common/footer.jsp" %>
 </body>
 </html>
-	<% }
-	} %>

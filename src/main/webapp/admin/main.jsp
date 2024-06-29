@@ -9,10 +9,11 @@
 </head>
 <body>
 <%@ include file = "/common/header.jsp" %>
-	<ul>
-		<li><a href="<%= request.getContextPath() %>/member/main.jsp">회원관리</a></li>
-		<li><a href="<%= request.getContextPath() %>/book/main.jsp">도서관리</a></li>
-	</ul>
+<h3>Curi Online Book Market 관리</h3>
+<ul>
+	<li><a href="<%= request.getContextPath() %>/member/main.jsp">회원관리</a></li>
+	<li><a href="<%= request.getContextPath() %>/book/main.jsp">도서관리</a></li>
+</ul>
 <%@ include file = "/common/footer.jsp" %>
 </body>
 </html>

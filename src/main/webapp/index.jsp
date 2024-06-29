@@ -24,9 +24,9 @@
 </style>
 </head>
 <body>
-	
+
 <%@ include file = "/common/header.jsp" %>
-	
+
 	<h3>도서목록</h3>
 	<% if (bookList.size() == 0) {%>
 	<p>등록된 책이 없습니다.</p>
@@ -46,7 +46,7 @@
 	</table>
 <% } %>
 
-	<%@ include file="/common/footer.jsp" %>
-	
+<%@ include file="/common/footer.jsp" %>
+
 </body>
 </html>
