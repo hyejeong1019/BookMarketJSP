@@ -3,31 +3,39 @@ package cart;
 import java.sql.Date;
 
 public class CartItem {
-	private int id;
+	private int cartId;
 	private int memberNo;
 	private int bookId;
 	private int quantity;
 	private Date addDate;
 	
-	public CartItem (int memberNo, int bookId, int quantity) {
+	public CartItem(int cartId, int memberNo, int bookId, int quantity, Date redDate) {
+		this.cartId = cartId;
+		this.bookId = bookId;
+		this.quantity = quantity;
+		this.memberNo = memberNo;
+		this.addDate = redDate;
+	}
+
+	public CartItem(int cartId, int memberNo, int bookId, int quantity) {
+		this.cartId = cartId;
 		this.memberNo = memberNo;
 		this.bookId = bookId;
 		this.quantity = quantity;
 	}
 	
-	public CartItem (int cartId, int memberNo, int bookId, int quantity) {
-		this.id = cartId;
+	public CartItem(int memberNo, int bookId, int quantity) {
 		this.memberNo = memberNo;
 		this.bookId = bookId;
 		this.quantity = quantity;
 	}
 
-	public int getId() {
-		return id;
+	public int getCartId() {
+		return cartId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
 	}
 	
 	public int getMemberNo() {
@@ -54,9 +62,17 @@ public class CartItem {
 		this.quantity = quantity;
 	}
 
+	public Date getAddDate() {
+		return addDate;
+	}
+
+	public void setAddDate(Date addDate) {
+		this.addDate = addDate;
+	}
+
 	@Override
 	public String toString() {
-		return "CartItem [id=" + id + ", memberNo=" + memberNo + ", bookId=" + bookId + ", quantity=" + quantity
+		return "CartItem [cartId=" + cartId + ", memberNo=" + memberNo + ", bookId=" + bookId + ", quantity=" + quantity
 				+ ", addDate=" + addDate + "]";
-	}	
+	}
 }

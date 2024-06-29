@@ -4,9 +4,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import common.OracleJDBConnection;
 import book.Book;
 import book.BookDAO;
-import common.OracleJDBConnection;
 
 public class OracleBookDAO implements BookDAO {
 

@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ListCartDAO implements CartDAO {
-	
+
 	static private List<CartItem> itemList = new LinkedList<>();
 	static private int cart_seq = 0;
 	
@@ -13,7 +13,7 @@ public class ListCartDAO implements CartDAO {
 	public int insert(CartItem item) {
 		int result = 0;
 		
-		item.setId(++cart_seq);
+		item.setCartId(++cart_seq);
 		if (itemList.add(item)) result = 1;
 		
 		return result;
@@ -21,8 +21,9 @@ public class ListCartDAO implements CartDAO {
 
 	@Override
 	public CartItem select(int cartId, int loggedMemberNo) {
+		
 		for (CartItem item : itemList) {
-			if (item.getId() == cartId && item.getMemberNo() == loggedMemberNo)
+			if (item.getCartId() == cartId && item.getMemberNo() == loggedMemberNo)
 				return item;
 		}
 		return null;
@@ -32,7 +33,7 @@ public class ListCartDAO implements CartDAO {
 	public CartItem selectByBookId(int loggedMemberNo, int bookId) {
 
 		for (CartItem item : itemList) {
-			if (item.getBookId() == bookId && item.getMemberNo() == loggedMemberNo)
+			if (item.getMemberNo() == loggedMemberNo && item.getBookId() == bookId)
 				return item;
 		}
 		return null;

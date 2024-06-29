@@ -17,15 +17,15 @@ public class HJCartService implements CartService {
 		
 		int result = 0;
 		
-		// 장바구니에 같은 책이 있는지 확인한다. --> bookId로 확인
-		CartItem inItem = cartDao.selectByBookId(item.getMemberNo(), item.getBookId());
-		if (inItem == null) {
+		// bookId의 책이 이미 Cart에 있으면, 수량만 업데이트하기
+		CartItem inCartItem = cartDao.selectByBookId(item.getMemberNo(), item.getBookId());
+		if (inCartItem == null) {
 			System.out.println("책 추가");
 			result = cartDao.insert(item);
 		} else {
-			int quantity = item.getQuantity() + inItem.getQuantity();
+			int quantity = item.getQuantity() + inCartItem.getQuantity();
 			System.out.println("수량 변경 :" + quantity);
-			result = cartDao.update(inItem.getId(), item.getMemberNo(), item.getQuantity() + item.getQuantity());
+			result = cartDao.update(inCartItem.getCartId(), item.getMemberNo(), quantity);
 		}
 		
 		return result == 1 ? true : false;
@@ -42,12 +42,11 @@ public class HJCartService implements CartService {
 		
 		int result = cartDao.update(cartId, loggedMemberNo, quantity);
 		return result == 1 ? true : false;
-		
 	}
 
 	@Override
 	public boolean remove(int cartId, int loggedMemberNo) {
-		
+	
 		int result = cartDao.delete(cartId, loggedMemberNo);
 		return result == 1 ? true : false;
 	}
