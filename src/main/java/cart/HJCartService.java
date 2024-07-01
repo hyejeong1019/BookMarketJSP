@@ -1,5 +1,6 @@
 package cart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HJCartService implements CartService {
@@ -30,6 +31,12 @@ public class HJCartService implements CartService {
 		
 		return result == 1 ? true : false;
 	}
+	
+	@Override
+	public List<CartItem> readByBookId(int bookId) {
+		
+		return cartDao.selectByBookId(bookId);
+	}
 
 	@Override
 	public List<CartItem> listAll(int loggedMemberNo) {
@@ -48,6 +55,13 @@ public class HJCartService implements CartService {
 	public boolean remove(int cartId, int loggedMemberNo) {
 	
 		int result = cartDao.delete(cartId, loggedMemberNo);
+		return result == 1 ? true : false;
+	}
+	
+	@Override
+	public boolean removeByBookId(int bookId) {
+	
+		int result = cartDao.deleteByBookId(bookId);
 		return result == 1 ? true : false;
 	}
 

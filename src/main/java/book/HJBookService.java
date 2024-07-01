@@ -2,9 +2,10 @@ package book;
 
 import java.util.List;
 
-import book.Book;
-import book.BookDAO;
-import book.BookService;
+import cart.CartItem;
+import cart.CartService;
+import cart.HJCartService;
+import cart.OracleCartDAO;
 
 public class HJBookService implements BookService {
 
@@ -42,7 +43,17 @@ public class HJBookService implements BookService {
 
 	@Override
 	public boolean remove(int id) {
-		int result = bookDao.delete(id);
+		
+		if (bookDao.select(id) == null) return false;
+
+		int result = 0;
+		CartService cartService = new HJCartService(new OracleCartDAO());	
+		List<CartItem> itemList = cartService.readByBookId(id);
+		if (itemList.size() > 0) {
+			cartService.removeByBookId(id);
+		}
+		
+		result = bookDao.delete(id);
 		return (result == 1) ? true : false;
 	}
 

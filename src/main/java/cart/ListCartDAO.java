@@ -95,4 +95,16 @@ public class ListCartDAO implements CartDAO {
 		return result;
 	}
 
+	@Override
+	public List<CartItem> selectByBookId(int bookId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int deleteByBookId(int bookId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -3,7 +3,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "/common/isLoggedIn.jsp" %>
 <%
-	CartService service = new HJCartService(new ListCartDAO());
+	//CartService service = new HJCartService(new ListCartDAO());
+	CartService service = new HJCartService(new OracleCartDAO());
 
 	if (service.clear(memberNo)) {
 		response.sendRedirect(request.getContextPath() + "/cart/main.jsp");

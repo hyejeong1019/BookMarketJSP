@@ -5,7 +5,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "/common/isLoggedIn.jsp" %>
 <%
-	CartService cartService = new HJCartService(new ListCartDAO());
+	//CartService cartService = new HJCartService(new ListCartDAO());
+	CartService cartService = new HJCartService(new OracleCartDAO());
 	List<CartItem> itemList = cartService.listAll(memberNo);
 %>
 <!DOCTYPE html>

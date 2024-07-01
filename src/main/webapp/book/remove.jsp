@@ -5,9 +5,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "/common/isAdminLogged.jsp" %>
 <%
-	String idStr = request.getParameter("idStr");
-	if (idStr == null) {
-		response.sendRedirect("main.jsp");
+	String idStr = request.getParameter("id");
+	System.out.println("remove.jsp에 들어왔음");
+	if (idStr == null || idStr.isEmpty()) {
+		response.sendRedirect(request.getContextPath() + "/common/errorPage.jsp?removeError=1"); 
 	} else {
 		BookService service = new HJBookService(new OracleBookDAO());
 		if (service.remove(Integer.parseInt(idStr))) {
