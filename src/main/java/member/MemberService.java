@@ -8,5 +8,6 @@ public interface MemberService {
 	Member read(int no);
 	List<Member> listAll();
 	boolean edit(Member member, String oldPassword);
+	boolean editAdditionInfo(int no, String mobile, String email, String address);
 	boolean remove(int no);
 }

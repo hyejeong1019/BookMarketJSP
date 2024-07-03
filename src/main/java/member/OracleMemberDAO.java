@@ -189,6 +189,43 @@ public class OracleMemberDAO implements MemberDAO {
 	}
 	
 	@Override
+	public int updateAddtionalInfo(Member member) {
+		
+		OracleJDBConnection jdbc = new OracleJDBConnection();
+
+		// sql문
+		String sql = new StringBuilder()
+				.append("update member ")
+				//.append("set password=?, nickname=?")
+				.append("set mobile=?, email=?, address=?")
+				.append("where no=?")
+				.toString();
+
+		int result = 0;
+		
+		try {
+			// PS 객체, 매개변수 set
+			jdbc.pstmt = jdbc.conn.prepareStatement(sql);
+			jdbc.pstmt.setString(1, member.getMobile());
+			jdbc.pstmt.setString(2, member.getEmail());
+			jdbc.pstmt.setString(3, member.getAddress());
+			jdbc.pstmt.setInt(4, member.getNo());
+
+			// sql 실행~~~~
+			result = jdbc.pstmt.executeUpdate();
+			System.out.println(result + "행이 수정되었습니다.");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			jdbc.close();
+		}
+		
+		return result;
+	}
+	
+	
+	@Override
 	public int delete(int no) {
 		int result = 0;
 		

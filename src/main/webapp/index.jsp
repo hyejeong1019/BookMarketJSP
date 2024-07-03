@@ -25,6 +25,12 @@
 </head>
 <body>
 
+<%	if (request.getParameter("order") != null) { %>
+		<script>
+			alert("주문을 완료하였습니다.");
+		</script>
+<%	} %>
+
 <%@ include file = "/common/header.jsp" %>
 
 	<h3>도서목록</h3>

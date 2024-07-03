@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	import="member.*"
+	import="cart.*"
     pageEncoding="UTF-8"%>
 <%
 	if (session.getAttribute("MemberId") == null
@@ -13,7 +14,11 @@
 	if (noStr == null || noStr.isEmpty()) {
 		response.sendRedirect(request.getContextPath() + "/common/errorPage.jsp?removeError=1");
 	} else {
-		MemberService service = new HJMemberService(new OracleMemberDAO()); 
+		MemberService service = new HJMemberService(new OracleMemberDAO());
+		CartService cartService = new HJCartService(new OracleCartDAO());
+		if (!cartService.clear(Integer.parseInt(noStr))) {
+			response.sendRedirect(request.getContextPath() + "/common/errorPage.jsp?cartError=1");
+		}
 		if (service.remove(Integer.parseInt(noStr))) {
 			response.sendRedirect(request.getContextPath() + "/index.jsp");
 		} else {

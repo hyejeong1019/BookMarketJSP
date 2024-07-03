@@ -56,6 +56,21 @@ public class HJMemberService implements MemberService {
 	}
 	
 	@Override
+	public boolean editAdditionInfo(int no, String mobile, String email, String address) {
+		
+		Member member = new Member();
+		
+		member.setNo(no);
+		member.setMobile(mobile);
+		member.setEmail(email);
+		member.setAddress(address);
+		
+		memberDao.updateAddtionalInfo(member);
+		
+		return false;
+	}
+	
+	@Override
 	public boolean remove(int no) {
 		if (memberDao.select(no) == null) {
 			return false;

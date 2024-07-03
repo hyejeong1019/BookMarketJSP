@@ -8,6 +8,11 @@ public class Member {
 	private String password;
 	private String nickname;
 	private Date regdate;
+	private String mobile;
+	private String email;
+	private String address;
+	
+	public Member() {}
 	
 	public Member(int no, String id, String password, String nickname, Date regdate) {
 		this.no = no;
@@ -22,7 +27,6 @@ public class Member {
 		this.password = password;
 		this.nickname = nickname;
 	}
-	
 	
 	public int getNo() {
 		return no;
@@ -53,6 +57,30 @@ public class Member {
 	}
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	@Override

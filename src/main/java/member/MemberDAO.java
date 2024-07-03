@@ -10,5 +10,6 @@ public interface MemberDAO {
 	Member select(String id, String password);
 	List<Member> selectAll();
 	int update(Member member);
+	int updateAddtionalInfo(Member member);
 	int delete(int no);
 }
