@@ -50,7 +50,7 @@
 		%>
 		<tr><td><%= item.getCartId() %></td>
 			<td><%= item.getBookId() %></td>
-			<td><%= book.getTitle() %></td>
+			<td><a href="<%= request.getContextPath() %>/book/detailPage.jsp?id=<%= book.getId() %>"><%= book.getTitle() %></td>
 			<td><%= String.format("%,d", book.getPrice()) %></td>
 			<td><form action="update.jsp" method="post" onsumbmit="return isValidForm()">
 					<input type="hidden" name="id" value="<%= item.getCartId() %>">
