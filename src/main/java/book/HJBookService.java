@@ -5,6 +5,7 @@ import java.util.List;
 import cart.CartItem;
 import cart.CartService;
 import cart.HJCartService;
+import cart.HashMapCartDAO;
 import cart.OracleCartDAO;
 
 public class HJBookService implements BookService {
@@ -47,7 +48,8 @@ public class HJBookService implements BookService {
 		if (bookDao.select(id) == null) return false;
 
 		int result = 0;
-		CartService cartService = new HJCartService(new OracleCartDAO());	
+		//** CartService cartService = new HJCartService(new OracleCartDAO());
+		CartService cartService = new HJCartService(new HashMapCartDAO());
 		List<CartItem> itemList = cartService.readByBookId(id);
 		if (itemList.size() > 0) {
 			cartService.removeByBookId(id);

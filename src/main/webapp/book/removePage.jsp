@@ -30,7 +30,6 @@
 			<li>저자 : <%= book.getAuthor() %></li>
 			<li>출판사 : <%= book.getPublisher() %></li>
 			<li>가격 : <%= book.getPrice() %></li>
-			<li>재고 : <%= book.getInstock() %></li>
 		</ul>
 		<br>
 		도서 정보를 삭제하시겠습니까?

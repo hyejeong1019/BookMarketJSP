@@ -38,7 +38,7 @@
 	<p>등록된 책이 없습니다.</p>
 <% } else { %>
 	<table border=1>
-		<tr><th>아이디</th><th>제목</th><th>저자</th><th>출판사</th><th>가격</th><th>재고</th><tr>
+		<tr><th>아이디</th><th>제목</th><th>저자</th><th>출판사</th><th>가격</th><tr>
 		<% for (Book book : bookList) { %>
 			<tr>
 				<td><%= book.getId() %></td>
@@ -46,7 +46,6 @@
 				<td><%= book.getAuthor() %></td>
 				<td><%= book.getPublisher() %></td>
 				<td><%= String.format("%,d", book.getPrice()) %>원</td>
-				<td><%= book.getInstock() %>권</td>
 			</tr>
 		<% } %>
 	</table>

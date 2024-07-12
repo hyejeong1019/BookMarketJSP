@@ -8,21 +8,13 @@ public class Book {
 	private String author;
 	private String publisher;
 	private int price;
-	private int instock;
-	
-	private String category;
-	private String releaseDate;
-	private int numPages;
-	private String description;
-	private String imagePath;
 	private Date regDate;
 	
-	public Book(String title, String author, String publisher, int price, int instock) {
+	public Book(String title, String author, String publisher, int price) {
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
 		this.price = price;
-		this.instock = instock;
 	}
 
 	public int getId() {
@@ -65,54 +57,6 @@ public class Book {
 		this.price = price;
 	}
 
-	public int getInstock() {
-		return instock;
-	}
-
-	public void setInstock(int instock) {
-		this.instock = instock;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
-	public String getReleaseDate() {
-		return releaseDate;
-	}
-
-	public void setReleaseDate(String releaseDate) {
-		this.releaseDate = releaseDate;
-	}
-
-	public int getNumPages() {
-		return numPages;
-	}
-
-	public void setNumPages(int numPages) {
-		this.numPages = numPages;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getImagePath() {
-		return imagePath;
-	}
-
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
-	}
-
 	public Date getRegDate() {
 		return regDate;
 	}
@@ -124,6 +68,6 @@ public class Book {
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publisher=" + publisher + ", price="
-				+ price + ", instock=" + instock + ", regDate=" + regDate + "]";
+				+ price + ", regDate=" + regDate + "]";
 	}
 }

@@ -8,13 +8,12 @@
 	String author = request.getParameter("author");
 	String publisher = request.getParameter("publisher");
 	String priceStr = request.getParameter("price");
-	String instockStr = request.getParameter("instock");
 	
 	//****** 이상함 priceStr과 instockStr을 null로 확인 문제가 생김
 	if (idStr == null) {
 		response.sendRedirect("main.jsp");
 	}
-	else if (title == null || author == null || publisher == null || priceStr == "" || instockStr == "") {
+	else if (title == null || author == null || publisher == null || priceStr == "") {
 		response.sendRedirect("modifyPage.jsp");
 	} else {
 		BookService service = new HJBookService(new OracleBookDAO());
@@ -26,7 +25,6 @@
 			book.setAuthor(author);
 			book.setPublisher(publisher);
 			book.setPrice(Integer.parseInt(priceStr));
-			book.setInstock(Integer.parseInt(instockStr));
 			if (service.edit(book)) {
 				response.sendRedirect("main.jsp");
 			} else {

@@ -12,7 +12,8 @@
 	}
 	
 	//CartService service = new HJCartService(new ListCartDAO());
-	CartService service = new HJCartService(new OracleCartDAO());
+	//** CartService service = new HJCartService(new OracleCartDAO());
+	CartService service = new HJCartService(new HashMapCartDAO());
 	if (service.update(Integer.parseInt(idStr), memberNo, Integer.parseInt(quanStr))) {
 		response.sendRedirect(request.getContextPath() + "/cart/main.jsp");
 	} else {

@@ -32,7 +32,6 @@
 		<input type="text" name="author" value="<%= book.getAuthor() %>" placeholder="저자 입력"><br>
 		<input type="text" name="publisher" value="<%= book.getPublisher() %>" placeholder="출판사 입력"><br>
 		<input type="text" name="price" value="<%= book.getPrice() %>" placeholder="가격 입력"><br>
-		<input type="text" name="instock" value="<%= book.getInstock() %>" placeholder="재고 입력"><br>
 		<br>
 		<input type="submit" value="수정">
 		<a href="detailPage.jsp?id=<%= book.getId() %>"><input type="button" value="취소"></a>

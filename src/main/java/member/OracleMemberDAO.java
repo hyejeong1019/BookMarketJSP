@@ -65,8 +65,16 @@ public class OracleMemberDAO implements MemberDAO {
 
 			// ResultSet 객체에서 결과값 가져와서 출력하기
 			if (jdbc.rs.next()) {
-				member = new Member(jdbc.rs.getInt("no"), jdbc.rs.getString("id"), jdbc.rs.getString("password"),
-						jdbc.rs.getString("nickname"), jdbc.rs.getDate("regdate"));
+				member = new Member(
+						jdbc.rs.getInt("no"),
+						jdbc.rs.getString("id"),
+						jdbc.rs.getString("password"),
+						jdbc.rs.getString("nickname"),
+						jdbc.rs.getDate("regdate")
+				);
+				member.setMobile(jdbc.rs.getString("mobile"));
+				member.setAddress(jdbc.rs.getString("address"));
+				member.setEmail(jdbc.rs.getString("email"));
 
 			}
 		} catch (SQLException e) {
@@ -104,6 +112,9 @@ public class OracleMemberDAO implements MemberDAO {
 					jdbc.rs.getString("password"),
 					jdbc.rs.getString("nickname"),
 					jdbc.rs.getDate("regdate"));
+				member.setMobile(jdbc.rs.getString("mobile"));
+				member.setAddress(jdbc.rs.getString("address"));
+				member.setEmail(jdbc.rs.getString("email"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -143,6 +154,9 @@ public class OracleMemberDAO implements MemberDAO {
 						jdbc.rs.getString("password"),
 						jdbc.rs.getString("nickname"),
 						jdbc.rs.getDate("regdate"));
+				member.setMobile(jdbc.rs.getString("mobile"));
+				member.setAddress(jdbc.rs.getString("address"));
+				member.setEmail(jdbc.rs.getString("email"));
 				memberList.add(member);
 			}
 

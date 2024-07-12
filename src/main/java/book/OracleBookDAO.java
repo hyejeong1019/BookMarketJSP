@@ -16,8 +16,8 @@ public class OracleBookDAO implements BookDAO {
 		int result = 0;
 		
 		String sql = new StringBuilder()
-				.append("insert into book (id, title, author, publisher, instock, price, regdate) ")
-				.append("values (book_seq.nextval, ?, ?, ?, ?, ?, sysdate)")
+				.append("insert into book (id, title, author, publisher, price, regdate) ")
+				.append("values (book_seq.nextval, ?, ?, ?, ?, sysdate)")
 				.toString();
 		
 		try {
@@ -26,8 +26,7 @@ public class OracleBookDAO implements BookDAO {
 			jdbc.pstmt.setString(1, book.getTitle());
 			jdbc.pstmt.setString(2, book.getAuthor());
 			jdbc.pstmt.setString(3, book.getPublisher());
-			jdbc.pstmt.setInt(4, book.getInstock());
-			jdbc.pstmt.setInt(5, book.getPrice());
+			jdbc.pstmt.setInt(4, book.getPrice());
 			
 			result = jdbc.pstmt.executeUpdate();
 			System.out.println(result + "행이 추가되었습니다.");
@@ -60,8 +59,7 @@ public class OracleBookDAO implements BookDAO {
 					jdbc.rs.getString("title"),
 					jdbc.rs.getString("author"),
 					jdbc.rs.getString("publisher"),
-					jdbc.rs.getInt("price"),
-					jdbc.rs.getInt("instock")
+					jdbc.rs.getInt("price")
 				);
 				book.setId(jdbc.rs.getInt("id"));
 				book.setRegDate(jdbc.rs.getDate("regdate"));
@@ -93,8 +91,7 @@ public class OracleBookDAO implements BookDAO {
 					jdbc.rs.getString("title"),
 					jdbc.rs.getString("author"),
 					jdbc.rs.getString("publisher"),
-					jdbc.rs.getInt("price"),
-					jdbc.rs.getInt("instock")
+					jdbc.rs.getInt("price")
 				);
 				book.setId(jdbc.rs.getInt("id"));
 				book.setRegDate(jdbc.rs.getDate("regdate"));
@@ -121,7 +118,6 @@ public class OracleBookDAO implements BookDAO {
 				.append("author=?, ")
 				.append("publisher=?, ")
 				.append("price=?, ")
-				.append("instock=?")
 				.append("where id=?")
 				.toString();
 		
@@ -132,8 +128,7 @@ public class OracleBookDAO implements BookDAO {
 			jdbc.pstmt.setString(2, book.getAuthor());
 			jdbc.pstmt.setString(3, book.getPublisher());
 			jdbc.pstmt.setInt(4, book.getPrice());
-			jdbc.pstmt.setInt(5, book.getInstock());
-			jdbc.pstmt.setInt(6, book.getId());
+			jdbc.pstmt.setInt(5, book.getId());
 			
 			result = jdbc.pstmt.executeUpdate();
 			System.out.println(result + "행이 수정 되었습니다.");

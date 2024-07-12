@@ -4,7 +4,8 @@
 <%@ include file = "/common/isLoggedIn.jsp" %>
 <%
 	//CartService service = new HJCartService(new ListCartDAO());
-	CartService service = new HJCartService(new OracleCartDAO());
+	//** CartService service = new HJCartService(new OracleCartDAO());
+	CartService service = new HJCartService(new HashMapCartDAO());
 
 	String bookIdStr = request.getParameter("bookId");
 	

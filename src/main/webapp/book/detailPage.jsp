@@ -29,7 +29,6 @@
 			<li>저자 : <%= book.getAuthor() %></li>
 			<li>출판사 : <%= book.getPublisher() %></li>
 			<li>가격 : <%= book.getPrice() %></li>
-			<li>재고 : <%= book.getInstock() %></li>
 		</ul>
 		<br>
 		
