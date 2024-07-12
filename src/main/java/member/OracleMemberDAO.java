@@ -71,10 +71,9 @@ public class OracleMemberDAO implements MemberDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			jdbc.close();
 		}
-
-		// 자원 객체 닫기
-		jdbc.close();
 
 		return member;
 	}
@@ -108,6 +107,8 @@ public class OracleMemberDAO implements MemberDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			jdbc.close();
 		}
 
 		// 자원 객체 닫기

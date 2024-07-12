@@ -162,6 +162,8 @@ public class OracleBookDAO implements BookDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			jdbc.close();
 		}
 		
 		return result;

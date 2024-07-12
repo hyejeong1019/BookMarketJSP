@@ -15,8 +15,8 @@ public class OracleCartDAO implements CartDAO {
 		
 		OracleJDBConnection jdbc = new OracleJDBConnection();
 		
-		String sql = new StringBuilder("insert into cart ")
-				.append("(id, member_no, book_id, quantity, regdate) ")
+		String sql = new StringBuilder()
+				.append("insert into cart (id, member_no, book_id, quantity, regdate) ")
 				.append("values (cart_seq.nextval, ?, ?, ?, sysdate)")
 				.toString();
 		
@@ -31,8 +31,10 @@ public class OracleCartDAO implements CartDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			jdbc.close();
 		}
-		
+				
 		return result;
 	}
 
@@ -62,6 +64,8 @@ public class OracleCartDAO implements CartDAO {
 			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			jdbc.close();
 		}
 		
 		return item;
@@ -93,6 +97,8 @@ public class OracleCartDAO implements CartDAO {
 			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			jdbc.close();
 		}
 		
 		return item;
@@ -124,6 +130,8 @@ public class OracleCartDAO implements CartDAO {
 			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			jdbc.close();
 		}
 		
 		return itemList;
@@ -155,6 +163,8 @@ public class OracleCartDAO implements CartDAO {
 			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			jdbc.close();
 		}
 		
 		return itemList;
@@ -183,6 +193,8 @@ public class OracleCartDAO implements CartDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			jdbc.close();
 		}
 		
 		return result;
@@ -206,6 +218,8 @@ public class OracleCartDAO implements CartDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			jdbc.close();
 		}
 		
 		return result;
@@ -228,6 +242,8 @@ public class OracleCartDAO implements CartDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			jdbc.close();
 		}
 		
 		return result;
@@ -250,6 +266,8 @@ public class OracleCartDAO implements CartDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			jdbc.close();
 		}
 		
 		return result;
