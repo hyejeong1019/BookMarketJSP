@@ -5,7 +5,7 @@
 <%
 	//CartService service = new HJCartService(new ListCartDAO());
 	//** CartService service = new HJCartService(new OracleCartDAO());
-	CartService service = new HJCartService(new HashMapCartDAO());
+	CartService service = new HJCartService(HashMapCartDAO.getInstance());
 
 	if (service.clear(memberNo)) {
 		response.sendRedirect(request.getContextPath() + "/cart/main.jsp");

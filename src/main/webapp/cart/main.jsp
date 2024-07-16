@@ -7,7 +7,7 @@
 <%
 	//CartService cartService = new HJCartService(new ListCartDAO());
 	//** CartService cartService = new HJCartService(new OracleCartDAO());
-	CartService cartService = new HJCartService(new HashMapCartDAO());
+	CartService cartService = new HJCartService(HashMapCartDAO.getInstance());
 	List<CartItem> itemList = cartService.listAll(memberNo);
 %>
 <!DOCTYPE html>

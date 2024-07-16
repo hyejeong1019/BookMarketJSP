@@ -16,7 +16,7 @@
 	} else {
 		MemberService service = new HJMemberService(new OracleMemberDAO());
 		//** CartService cartService = new HJCartService(new OracleCartDAO());
-		CartService cartService = new HJCartService(new HashMapCartDAO());
+		CartService cartService = new HJCartService(HashMapCartDAO.getInstance());
 		
 		if (!cartService.clear(Integer.parseInt(noStr))) {
 			response.sendRedirect(request.getContextPath() + "/common/errorPage.jsp?cartError=1");

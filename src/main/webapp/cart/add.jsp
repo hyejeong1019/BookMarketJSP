@@ -5,7 +5,8 @@
 <%
 	//CartService service = new HJCartService(new ListCartDAO());
 	//** CartService service = new HJCartService(new OracleCartDAO());
-	CartService service = new HJCartService(new HashMapCartDAO());
+	//** CartService service = new HJCartService(new HashMapCartDAO());
+	CartService service = new HJCartService(HashMapCartDAO.getInstance());
 
 	String bookIdStr = request.getParameter("bookId");
 	

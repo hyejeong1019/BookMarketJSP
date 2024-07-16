@@ -8,13 +8,15 @@ public class Book {
 	private String author;
 	private String publisher;
 	private int price;
+	private int instock;
 	private Date regDate;
 	
-	public Book(String title, String author, String publisher, int price) {
+	public Book(String title, String author, String publisher, int price, int instock) {
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
 		this.price = price;
+		this.instock = instock;
 	}
 
 	public int getId() {
@@ -57,6 +59,14 @@ public class Book {
 		this.price = price;
 	}
 
+	public int getInstock() {
+		return instock;
+	}
+
+	public void setInstock(int instock) {
+		this.instock = instock;
+	}
+
 	public Date getRegDate() {
 		return regDate;
 	}
@@ -68,6 +78,6 @@ public class Book {
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publisher=" + publisher + ", price="
-				+ price + ", regDate=" + regDate + "]";
+				+ price + ", instock=" + instock + ", regDate=" + regDate + "]";
 	}
 }

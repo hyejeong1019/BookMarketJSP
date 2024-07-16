@@ -49,7 +49,8 @@ public class HJBookService implements BookService {
 
 		int result = 0;
 		//** CartService cartService = new HJCartService(new OracleCartDAO());
-		CartService cartService = new HJCartService(new HashMapCartDAO());
+		//** CartService cartService = new HJCartService(new HashMapCartDAO());
+		CartService cartService = new HJCartService(HashMapCartDAO.getInstance());
 		List<CartItem> itemList = cartService.readByBookId(id);
 		if (itemList.size() > 0) {
 			cartService.removeByBookId(id);

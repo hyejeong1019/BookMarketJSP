@@ -26,7 +26,7 @@
 		
 	// Cart에서 주문 아이템 삭제
 	//** CartService cartService = new HJCartService(new OracleCartDAO());
-	CartService cartService = new HJCartService(new HashMapCartDAO());
+	CartService cartService = new HJCartService(HashMapCartDAO.getInstance());
 	if (cartService.clear(memberNo)) {
 		response.sendRedirect(request.getContextPath() + "/index.jsp?order=1");
 	};

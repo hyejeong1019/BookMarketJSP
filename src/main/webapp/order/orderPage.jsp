@@ -7,7 +7,7 @@
 <%@ include file = "/common/isLoggedIn.jsp" %>
 <%
 	//** CartService cartService = new HJCartService(new OracleCartDAO());
-	CartService cartService = new HJCartService(new HashMapCartDAO());
+	CartService cartService = new HJCartService(HashMapCartDAO.getInstance());
 	BookService bookService = new HJBookService(new OracleBookDAO());
 	MemberService memberService = new HJMemberService(new OracleMemberDAO());
 	
